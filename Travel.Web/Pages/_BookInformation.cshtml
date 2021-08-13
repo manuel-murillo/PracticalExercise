@@ -1,0 +1,19 @@
+﻿@using Microsoft.AspNetCore.Mvc.Localization
+@model Travel.Core.BookInformation
+@inject IViewLocalizer Localizer
+
+@{
+    var authors = Model.Authors;
+}
+
+<div class="border-dark card">
+    <div class="card-header">@Model.Title</div>
+    <div class="card-body">
+        <p class="card-text">@Model.Synopsis</p>
+    </div>
+    <ul class="list-group list-group-flush">
+        <li class="list-group-item">@Localizer["PagesTitle"]: @Model.Pages</li>
+        <li class="list-group-item">@Localizer["EditorialTitle"]: @Model.EditorialName, @Model.EditorialHeadquarters</li>
+        <li class="list-group-item">@Localizer[authors.Count == 1 ? "AuthorTitle" : "AuthorsTitle"]: @String.Join(", ", authors)</li>
+    </ul>
+</div>
